@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Dental Sonrisa Viva | Dra. Lucía Fernández Rojas</title>
+    <meta name="description" content="Tarjeta de presentación digital de la Dra. Lucía Fernández Rojas, especialista en Rehabilitación Oral e Implantología en Arequipa. Agenda tu cita odontológica hoy.">
+    <meta name="author" content="Dra. Lucía Fernández Rojas">
+    <meta name="theme-color" content="#0c233c">
+
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="Clínica Dental Sonrisa Viva | Dra. Lucía Fernández">
+    <meta property="og:description" content="Recuperamos tu sonrisa con tecnología y calidez humana. Especialista en Rehabilitación Oral e Implantología en Arequipa.">
+    <meta property="og:image" content="assets/doctora.jpg">
+    <meta property="og:locale" content="es_PE">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dra. Lucía Fernández | Clínica Dental Sonrisa Viva">
+    <meta name="twitter:description" content="Rehabilitación Oral e Implantología con tecnología de punta en Arequipa.">
+    <meta name="twitter:image" content="assets/doctora.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Estilos de la Tarjeta -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Schema.org JSON-LD para SEO Local de Odontología -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "Clínica Dental Sonrisa Viva",
+      "image": "assets/doctora.jpg",
+      "description": "Recuperamos tu sonrisa con tecnología y calidez humana. Cirugía Dentista, Rehabilitación Oral e Implantología en Arequipa.",
+      "telephone": "+51987654321",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Ejemplo 123, Of. 401",
+        "addressLocality": "Arequipa",
+        "addressRegion": "Arequipa",
+        "addressCountry": "PE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -16.409047,
+        "longitude": -71.537451
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:30",
+          "closes": "18:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday"],
+          "opens": "08:30",
+          "closes": "12:30"
+        }
+      ],
+      "employee": {
+        "@type": "Person",
+        "name": "Dra. Lucía Fernández Rojas",
+        "jobTitle": "Cirujano Dentista, Especialista en Rehabilitación Oral e Implantología"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Contenedor Envolvente Centralizado -->
+    <div class="card-wrapper" id="app">
+
+        <!-- Barra Superior de Utilidad (Theme Toggle & Acciones Rápidas) -->
+        <header class="top-nav" aria-label="Navegación superior de accesibilidad">
+            <div class="nav-brand">
+                <span class="pulse-indicator" aria-hidden="true"></span>
+                <span id="businessShortName" class="brand-text">Sonrisa Viva</span>
+            </div>
+            <div class="nav-controls">
+                <button type="button" class="ctrl-btn" id="themeToggleBtn" aria-label="Cambiar a modo oscuro o claro" title="Cambiar tema de color">
+                    <!-- Icono Sol / Luna dinámico en SVG -->
+                    <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button type="button" class="ctrl-btn" id="vcardDownloadNavBtn" aria-label="Guardar contacto en la agenda" title="Guardar contacto (vCard)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Barra de Navegación Interna Sticky con Scroll Suave -->
+        <nav class="sticky-sections-nav" aria-label="Navegación de secciones">
+            <ul class="nav-pills" id="navPillsList">
+                <li><a href="#hero" class="nav-pill active" data-section="hero">Inicio</a></li>
+                <li><a href="#sobre-mi" class="nav-pill" data-section="sobre-mi">Doctora</a></li>
+                <li><a href="#cuando-acudir" class="nav-pill" data-section="cuando-acudir">¿Cuándo acudir?</a></li>
+                <li><a href="#tratamientos" class="nav-pill" data-section="tratamientos">Tratamientos</a></li>
+                <li><a href="#galeria" class="nav-pill" data-section="galeria">Casos</a></li>
+                <li><a href="#ubicacion" class="nav-pill" data-section="ubicacion">Ubicación</a></li>
+                <li><a href="#horarios" class="nav-pill" data-section="horarios">Horarios</a></li>
+            </ul>
+        </nav>
+
+        <main id="mainContent">
+
+            <!-- ========================================================
+                 SECCIÓN 1: HERO
+                 ======================================================== -->
+            <section id="hero" class="section hero-section" aria-labelledby="heroTitle">
+                <div class="hero-header">
+                    <!-- Logo Clínico SVG -->
+                    <div class="clinic-logo-wrapper" aria-hidden="true">
+                        <svg class="clinic-logo-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="64" height="64" rx="20" fill="url(#logoGrad)" />
+                            <!-- Diente estilizado moderno con destello -->
+                            <path d="M32 15C25.5 15 20 20 20 26.5C20 31.5 22 35 24 39.5C26 44 26.5 49 28.5 49C30.5 49 30.5 43 32 43C33.5 43 33.5 49 35.5 49C37.5 49 38 44 40 39.5C42 35 44 31.5 44 26.5C44 20 38.5 15 32 15Z" fill="white" fill-opacity="0.95" />
+                            <path d="M26 23C26 21 28.5 19 32 19C35.5 19 38 21 38 23" stroke="#0ea5e9" stroke-width="2.5" stroke-linecap="round" />
+                            <!-- Destello de sonrisa -->
+                            <path d="M43 17L44.5 13L46 17L50 18.5L46 20L44.5 24L43 20L39 18.5L43 17Z" fill="#fbbf24" />
+                            <defs>
+                                <linearGradient id="logoGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#0c233c" />
+                                    <stop offset="0.6" stop-color="#0284c7" />
+                                    <stop offset="1" stop-color="#14b8a6" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+
+                    <div class="hero-titles">
+                        <span class="clinic-badge" id="heroClinicBadge">Clínica Dental Sonrisa Viva</span>
+                        <h1 class="hero-title" id="heroDoctorName">Dra. Lucía Fernández Rojas</h1>
+                        <p class="hero-specialty" id="heroDoctorSpecialty">Cirujano Dentista • Especialista en Rehabilitación Oral e Implantología</p>
+                    </div>
+                </div>
+
+                <div class="hero-quote">
+                    <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                    <p class="hero-slogan" id="heroSlogan">"Recuperamos tu sonrisa con tecnología y calidez humana"</p>
+                </div>
+
+                <!-- 3 Botones de Acción Principales (Grandes y Táctiles) -->
+                <div class="hero-cta-grid" aria-label="Acciones inmediatas">
+                    <a href="tel:+51987654321" class="hero-btn btn-call" id="heroBtnCall">
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </span>
+                        <div class="btn-text">
+                            <span class="btn-label">Llamar Ahora</span>
+                            <span class="btn-sub" id="heroCallSub">Atención Telefónica</span>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" class="hero-btn btn-whatsapp" id="heroBtnWhatsapp">
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12.031 2C6.495 2 2 6.494 2 12.029c0 1.93.548 3.738 1.498 5.279L2 22l4.838-1.464c1.472.848 3.18 1.343 4.993 1.343 5.535 0 10.029-4.494 10.029-10.029C21.86 6.494 17.566 2 12.031 2zm5.748 14.363c-.244.686-1.419 1.319-1.956 1.385-.494.06-1.127.094-3.238-.778-2.695-1.114-4.417-3.864-4.551-4.043-.134-.179-1.092-1.455-1.092-2.776 0-1.321.688-1.97 1.015-2.298.244-.244.537-.306.717-.306.18 0 .36.002.518.01.168.008.393-.064.614.471.244.593.834 2.033.908 2.182.073.15.122.327.024.523-.097.196-.146.319-.292.489-.147.17-.309.38-.44.51-.147.147-.3.308-.13.6.17.292.756 1.249 1.623 2.022 1.115.993 2.054 1.3 2.347 1.447.292.146.463.122.634-.074.17-.196.732-.855.927-1.148.196-.293.39-.244.658-.147.268.098 1.708.806 2.001.953.293.146.488.22.56.342.074.122.074.708-.17 1.394z"/>
+                            </svg>
+                        </span>
+                        <div class="btn-text">
+                            <span class="btn-label">WhatsApp</span>
+                            <span class="btn-sub">Consulta Inmediata</span>
+                        </div>
+                    </a>
+
+                    <a href="#ubicacion" class="hero-btn btn-maps" id="heroBtnMaps">
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                                <line x1="9" y1="3" x2="9" y2="18"></line>
+                                <line x1="15" y1="6" x2="15" y2="21"></line>
+                            </svg>
+                        </span>
+                        <div class="btn-text">
+                            <span class="btn-label">Cómo Llegar</span>
+                            <span class="btn-sub">Ver Mapa & Ruta</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Botones de Acción Secundaria: Guardar Contacto vCard y Compartir -->
+                <div class="hero-utility-row">
+                    <button type="button" class="utility-pill" id="heroSaveVCardBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <line x1="20" y1="8" x2="20" y2="14"></line>
+                            <line x1="23" y1="11" x2="17" y2="11"></line>
+                        </svg>
+                        <span>Guardar en Contactos</span>
+                    </button>
+                    <button type="button" class="utility-pill" id="heroShareBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        <span>Compartir Tarjeta</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECCIÓN 2: SOBRE LA DOCTORA
+                 ======================================================== -->
+            <section id="sobre-mi" class="section about-section" aria-labelledby="aboutTitle">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">Conóceme</span>
+                </div>
+                <h2 id="aboutTitle" class="section-title">Sobre la Doctora</h2>
+
+                <div class="doctor-profile-card">
+                    <div class="doctor-image-container">
+                        <img src="assets/doctora.jpg" alt="Dra. Lucía Fernández Rojas en su consultorio dental" class="doctor-photo" loading="lazy" width="400" height="400">
+                        <div class="doctor-verified-badge" title="Colegiatura profesional activa">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>COP Habilitado</span>
+                        </div>
+                    </div>
+
+                    <div class="doctor-bio-body">
+                        <h3 class="doctor-full-name" id="aboutDoctorName">Dra. Lucía Fernández Rojas</h3>
+                        <p class="doctor-reg" id="aboutDoctorReg">COP 14205 • Registro Nacional de Especialista</p>
+                        <p class="doctor-description" id="aboutDoctorBio">
+                            Con más de 12 años dedicados a la odontología avanzada en Arequipa, me enfoco en devolver no solo la estética dental, sino la seguridad y bienestar funcional de cada paciente mediante técnicas mínimamente invasivas y tecnología de vanguardia.
+                        </p>
+                    </div>
+
+                    <!-- 3 Datos de Credibilidad Clave -->
+                    <div class="credibility-grid" aria-label="Indicadores de trayectoria">
+                        <div class="credibility-card">
+                            <span class="cred-number" id="credExp">+12</span>
+                            <span class="cred-label">Años de Experiencia</span>
+                        </div>
+                        <div class="credibility-card">
+                            <span class="cred-number" id="credPatients">+3,500</span>
+                            <span class="cred-label">Sonrisas Renovadas</span>
+                        </div>
+                        <div class="credibility-card">
+                            <span class="cred-badge">Especialidad</span>
+                            <span class="cred-label" id="credStudies">Rehabilitación Oral e Implantes</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECCIÓN 3: ¿CUÁNDO ACUDIR?
+                 ======================================================== -->
+            <section id="cuando-acudir" class="section symptoms-section" aria-labelledby="whenTitle">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">Diagnóstico Oportuno</span>
+                </div>
+                <h2 id="whenTitle" class="section-title">¿Cuándo acudir a consulta?</h2>
+                <p class="section-subtitle">Si experimentas alguna de estas situaciones, es momento de una evaluación especializada:</p>
+
+                <div class="symptoms-grid" id="symptomsGrid">
+                    <!-- Tarjeta 1: Pérdida de dientes -->
+                    <article class="symptom-card">
+                        <div class="symptom-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 2C8 2 5 6 5 11c0 4 2 8 4 11 1 0 2-3 3-3s2 3 3 3c2-3 4-7 4-11 0-5-3-9-7-9z"></path>
+                            </svg>
+                        </div>
+                        <div class="symptom-content">
+                            <h3 class="symptom-title">Pérdida de Dientes</h3>
+                            <p class="symptom-desc">Ausencia de una o varias piezas dentales que dificulta la masticación o afecta tu confianza al hablar.</p>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta 2: Prótesis sobre implantes -->
+                    <article class="symptom-card">
+                        <div class="symptom-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="12" y1="2" x2="12" y2="7"></line>
+                                <circle cx="12" cy="14" r="5"></circle>
+                                <path d="M12 19v3"></path>
+                                <line x1="8" y1="22" x2="16" y2="22"></line>
+                            </svg>
+                        </div>
+                        <div class="symptom-content">
+                            <h3 class="symptom-title">Prótesis Inestables</h3>
+                            <p class="symptom-desc">Molestia o movimiento en dentaduras removibles que requieren fijación segura mediante implantes osteointegrados.</p>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta 3: Reconstrucción de sonrisa -->
+                    <article class="symptom-card">
+                        <div class="symptom-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                        </div>
+                        <div class="symptom-content">
+                            <h3 class="symptom-title">Reconstrucción de Sonrisa</h3>
+                            <p class="symptom-desc">Dientes pigmentados, desalineados o fracturados que buscas transformar con carillas y diseño estético digital.</p>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta 4: Desgaste severo -->
+                    <article class="symptom-card">
+                        <div class="symptom-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </div>
+                        <div class="symptom-content">
+                            <h3 class="symptom-title">Desgaste Severo & Bruxismo</h3>
+                            <p class="symptom-desc">Apretamiento dental nocturno, dolor en la mandíbula o dientes reducidos en tamaño que requieren rehabilitación oclusal.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECCIÓN 4: TRATAMIENTOS (ACORDEÓN)
+                 ======================================================== -->
+            <section id="tratamientos" class="section treatments-section" aria-labelledby="treatmentsTitle">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">Servicios Dentales</span>
+                </div>
+                <h2 id="treatmentsTitle" class="section-title">Tratamientos Especializados</h2>
+                <p class="section-subtitle">Procedimientos de alta precisión diseñados para devolverte comodidad y confianza:</p>
+
+                <div class="accordion-container" id="treatmentsAccordion" role="region" aria-label="Lista de tratamientos">
+                    <!-- Generado dinámicamente o estructurado accesiblemente con botón y contenido -->
+                    <div class="accordion-item" data-treatment-id="implantes">
+                        <button type="button" class="accordion-header" aria-expanded="false" id="header-implantes" aria-controls="content-implantes">
+                            <span class="acc-title-group">
+                                <span class="acc-badge">01</span>
+                                <span class="acc-title">Implantología Dental Avanzada</span>
+                            </span>
+                            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="accordion-panel" id="content-implantes" role="region" aria-labelledby="header-implantes" hidden>
+                            <div class="accordion-body">
+                                <p>Sustitución definitiva de raíces dentales mediante implantes de titanio biocompatible de grado médico. Permite colocar coronas fijas de zirconio idénticas al diente natural con alta durabilidad y sin desgastar dientes vecinos.</p>
+                                <a href="#" class="treatment-cta-btn" data-treatment="Implantología Dental Avanzada">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 2C6.495 2 2 6.494 2 12.029c0 1.93.548 3.738 1.498 5.279L2 22l4.838-1.464c1.472.848 3.18 1.343 4.993 1.343 5.535 0 10.029-4.494 10.029-10.029C21.86 6.494 17.566 2 12.031 2z"/></svg>
+                                    <span>Consultar por WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" data-treatment-id="rehabilitacion">
+                        <button type="button" class="accordion-header" aria-expanded="false" id="header-rehabilitacion" aria-controls="content-rehabilitacion">
+                            <span class="acc-title-group">
+                                <span class="acc-badge">02</span>
+                                <span class="acc-title">Rehabilitación Oral Integral</span>
+                            </span>
+                            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="accordion-panel" id="content-rehabilitacion" role="region" aria-labelledby="header-rehabilitacion" hidden>
+                            <div class="accordion-body">
+                                <p>Reconstrucción global de la mordida para pacientes con pérdidas múltiples o desgaste oclusal severo. Combinamos coronas, prótesis fijas y puentes biomecánicamente optimizados para masticar sin molestias.</p>
+                                <a href="#" class="treatment-cta-btn" data-treatment="Rehabilitación Oral Integral">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 2C6.495 2 2 6.494 2 12.029c0 1.93.548 3.738 1.498 5.279L2 22l4.838-1.464c1.472.848 3.18 1.343 4.993 1.343 5.535 0 10.029-4.494 10.029-10.029C21.86 6.494 17.566 2 12.031 2z"/></svg>
+                                    <span>Consultar por WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" data-treatment-id="estetica">
+                        <button type="button" class="accordion-header" aria-expanded="false" id="header-estetica" aria-controls="content-estetica">
+                            <span class="acc-title-group">
+                                <span class="acc-badge">03</span>
+                                <span class="acc-title">Diseño de Sonrisa & Carillas</span>
+                            </span>
+                            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="accordion-panel" id="content-estetica" role="region" aria-labelledby="header-estetica" hidden>
+                            <div class="accordion-body">
+                                <p>Carillas ultrafinas de porcelana pura o resina de alta estética. Corrección de manchas profundas, diastemas (separaciones) y forma dental con planificación digital personalizada según los rasgos de tu rostro.</p>
+                                <a href="#" class="treatment-cta-btn" data-treatment="Diseño de Sonrisa & Carillas">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 2C6.495 2 2 6.494 2 12.029c0 1.93.548 3.738 1.498 5.279L2 22l4.838-1.464c1.472.848 3.18 1.343 4.993 1.343 5.535 0 10.029-4.494 10.029-10.029C21.86 6.494 17.566 2 12.031 2z"/></svg>
+                                    <span>Consultar por WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" data-treatment-id="protesis">
+                        <button type="button" class="accordion-header" aria-expanded="false" id="header-protesis" aria-controls="content-protesis">
+                            <span class="acc-title-group">
+                                <span class="acc-badge">04</span>
+                                <span class="acc-title">Prótesis Fijas sobre Implantes</span>
+                            </span>
+                            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="accordion-panel" id="content-protesis" role="region" aria-labelledby="header-protesis" hidden>
+                            <div class="accordion-body">
+                                <p>Sistemas híbridos y sobredentaduras atornilladas que devuelven arcadas completas con máxima estabilidad. Olvídate de los adhesivos y disfruta de alimentos con total firmeza y naturalidad.</p>
+                                <a href="#" class="treatment-cta-btn" data-treatment="Prótesis Fijas sobre Implantes">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 2C6.495 2 2 6.494 2 12.029c0 1.93.548 3.738 1.498 5.279L2 22l4.838-1.464c1.472.848 3.18 1.343 4.993 1.343 5.535 0 10.029-4.494 10.029-10.029C21.86 6.494 17.566 2 12.031 2z"/></svg>
+                                    <span>Consultar por WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECCIÓN 5: GALERÍA ANTES / DESPUÉS (SLIDER INTERACTIVO)
+                 ======================================================== -->
+            <section id="galeria" class="section gallery-section" aria-labelledby="galleryTitle">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">Resultados Clínicos</span>
+                </div>
+                <h2 id="galleryTitle" class="section-title">Casos Clínicos</h2>
+                <p class="section-subtitle">Desliza la barra para ver la transformación real de rehabilitación y estética:</p>
+
+                <!-- Comparador interactivo Antes / Después -->
+                <div class="comparison-card">
+                    <div class="comparison-container" id="comparisonSliderContainer">
+                        <!-- Imagen Después (Fondo) -->
+                        <img src="assets/after.jpg" alt="Sonrisa después del tratamiento de rehabilitación oral" class="comparison-img after-image" loading="lazy" width="600" height="450">
+                        <span class="slider-badge badge-after">DESPUÉS</span>
+
+                        <!-- Imagen Antes (Recortada en capa superior) -->
+                        <div class="before-image-wrapper" id="beforeImageWrapper">
+                            <img src="assets/before.jpg" alt="Sonrisa antes del tratamiento" class="comparison-img before-image" loading="lazy" width="600" height="450">
+                            <span class="slider-badge badge-before">ANTES</span>
+                        </div>
+
+                        <!-- Línea Divisoria y Controlador Deslizante -->
+                        <div class="slider-divider" id="sliderDivider">
+                            <div class="slider-handle" aria-label="Controlador de comparación de imagen">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Input Range para accesibilidad táctil y por teclado -->
+                        <input type="range" min="0" max="100" value="50" class="comparison-range" id="comparisonRange" aria-label="Porcentaje de revelación del caso antes y después">
+                    </div>
+
+                    <div class="comparison-footer">
+                        <div class="comparison-info">
+                            <span class="case-tag">Caso Real</span>
+                            <span class="case-desc">Rehabilitación estética completa y carillas cerámicas</span>
+                        </div>
+                        <button type="button" class="lightbox-open-btn" id="openLightboxBtn" aria-label="Ampliar imagen en pantalla completa" title="Ampliar imagen">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <polyline points="9 21 3 21 3 15"></polyline>
+                                <line x1="21" y1="3" x2="14" y2="10"></line>
+                                <line x1="3" y1="21" x2="10" y2="14"></line>
+                            </svg>
+                            <span>Ampliar</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECCIÓN 6: UBICACIÓN
+                 ======================================================== -->
+            <section id="ubicacion" class="section location-section" aria-labelledby="locationTitle">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">Encuéntranos</span>
+                </div>
+                <h2 id="locationTitle" class="section-title">Ubicación del Consultorio</h2>
+                <p class="section-subtitle">Instalaciones modernas con estacionamiento cercano y fácil acceso:</p>
+
+                <div class="location-card">
+                    <!-- Mapa Embebido / Vista Interactiva -->
+                    <div class="map-container">
+                        <iframe 
+                            id="mapIframe"
+                            title="Mapa de ubicación del consultorio"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.424754593671!2d-71.53963972410885!3d-16.409047038167735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a59fe05e551%3A0x1142f36d10fa8c82!2sPlaza%20de%20Armas%20de%20Arequipa!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" 
+                            width="100%" 
+                            height="220" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                    <div class="location-details">
+                        <div class="address-box">
+                            <div class="address-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="address-content">
+                                <span class="address-title">Dirección</span>
+                                <p class="address-text" id="locationAddressText">Av. Ejemplo 123, Of. 401, Arequipa, Perú</p>
+                                <span class="address-note">Edificio Médico • Ascensor directo</span>
+                            </div>
+                        </div>
+
+                        <!-- Botones de Acción de Ubicación -->
+                        <div class="location-actions">
+                            <button type="button" class="loc-btn copy-address-btn" id="copyAddressBtn" title="Copiar dirección al portapapeles">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copiar Dirección</span>
+                            </button>
+
+                            <a href="https://maps.google.com/?q=-16.409047,-71.537451" target="_blank" rel="noopener noreferrer" class="loc-btn gmaps-btn" id="openGmapsLink">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                                    <line x1="9" y1="3" x2="9" y2="18"></line>
+                                    <line x1="15" y1="6" x2="15" y2="21"></line>
+                                </svg>
+                                <span>Abrir en Google Maps</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECCIÓN 7: HORARIOS (CON STATUS EN VIVO AMERICA/LIMA)
+                 ======================================================== -->
+            <section id="horarios" class="section schedule-section" aria-labelledby="scheduleTitle">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">Disponibilidad</span>
+                </div>
+                <h2 id="scheduleTitle" class="section-title">Horarios de Atención</h2>
+
+                <div class="schedule-card">
+                    <!-- Badge en vivo calculado por JS -->
+                    <div class="live-status-header">
+                        <div class="status-indicator-badge" id="liveStatusBadge">
+                            <span class="status-live-dot" id="liveStatusDot"></span>
+                            <span class="status-live-text" id="liveStatusText">Consultando horario...</span>
+                        </div>
+                        <span class="timezone-note">Hora de Perú (GMT-5)</span>
+                    </div>
+
+                    <!-- Tabla de Horarios -->
+                    <ul class="schedule-list" id="scheduleDaysList">
+                        <li class="schedule-row" data-day="1">
+                            <span class="day-name">Lunes</span>
+                            <span class="day-hours">08:30 - 18:30</span>
+                        </li>
+                        <li class="schedule-row" data-day="2">
+                            <span class="day-name">Martes</span>
+                            <span class="day-hours">08:30 - 18:30</span>
+                        </li>
+                        <li class="schedule-row" data-day="3">
+                            <span class="day-name">Miércoles</span>
+                            <span class="day-hours">08:30 - 18:30</span>
+                        </li>
+                        <li class="schedule-row" data-day="4">
+                            <span class="day-name">Jueves</span>
+                            <span class="day-hours">08:30 - 18:30</span>
+                        </li>
+                        <li class="schedule-row" data-day="5">
+                            <span class="day-name">Viernes</span>
+                            <span class="day-hours">08:30 - 18:30</span>
+                        </li>
+                        <li class="schedule-row" data-day="6">
+                            <span class="day-name">Sábado</span>
+                            <span class="day-hours">08:30 - 12:30</span>
+                        </li>
+                        <li class="schedule-row is-closed" data-day="0">
+                            <span class="day-name">Domingo</span>
+                            <span class="day-hours">Cerrado</span>
+                        </li>
+                    </ul>
+
+                    <div class="schedule-footer-note">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <span>Modalidad: Atención personalizada previa cita programada.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECCIÓN 8: FORMAS DE PAGO
+                 ======================================================== -->
+            <section id="pagos" class="section payment-section" aria-labelledby="paymentTitle">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">Facilidades</span>
+                </div>
+                <h2 id="paymentTitle" class="section-title">Formas de Pago</h2>
+                <p class="section-subtitle">Opciones seguras y flexibles para tu tranquilidad:</p>
+
+                <div class="payments-grid">
+                    <!-- Efectivo -->
+                    <div class="payment-card">
+                        <div class="payment-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <path d="M6 12h.01M18 12h.01"></path>
+                            </svg>
+                        </div>
+                        <span class="payment-name">Efectivo</span>
+                        <span class="payment-desc">Soles y Dólares</span>
+                    </div>
+
+                    <!-- Yape & Plin -->
+                    <div class="payment-card">
+                        <div class="payment-icon yape-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                        </div>
+                        <span class="payment-name">Yape & Plin</span>
+                        <span class="payment-desc">Billeteras Móviles</span>
+                    </div>
+
+                    <!-- Transferencias -->
+                    <div class="payment-card">
+                        <div class="payment-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="17 1 21 5 17 9"></polyline>
+                                <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                                <polyline points="7 23 3 19 7 15"></polyline>
+                                <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                            </svg>
+                        </div>
+                        <span class="payment-name">Transferencias</span>
+                        <span class="payment-desc">BCP, BBVA, Interbank</span>
+                    </div>
+
+                    <!-- Tarjetas -->
+                    <div class="payment-card">
+                        <div class="payment-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                            </svg>
+                        </div>
+                        <span class="payment-name">Tarjetas</span>
+                        <span class="payment-desc">Crédito y Débito</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECCIÓN 9: COMPARTIR (CÓDIGO QR PURO JS & SHARE API)
+                 ======================================================== -->
+            <section id="compartir" class="section share-section" aria-labelledby="shareTitle">
+                <div class="section-tag-wrapper">
+                    <span class="section-tag">Conecta & Comparte</span>
+                </div>
+                <h2 id="shareTitle" class="section-title">Comparte Esta Tarjeta</h2>
+                <p class="section-subtitle">Escanea directamente con la cámara de tu smartphone:</p>
+
+                <div class="share-card">
+                    <!-- Contenedor del QR Canvas en JS Puro -->
+                    <div class="qr-box">
+                        <div class="qr-canvas-wrapper" id="qrCanvasWrapper">
+                            <canvas id="qrCanvas" width="200" height="200" aria-label="Código QR generado para esta tarjeta"></canvas>
+                        </div>
+                        <span class="qr-caption">Código QR dinámico offline</span>
+                    </div>
+
+                    <!-- Botones de Compartir -->
+                    <div class="share-btn-group">
+                        <button type="button" class="btn btn-action" id="shareNativeBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            <span>Compartir Tarjeta</span>
+                        </button>
+
+                        <button type="button" class="btn btn-outline" id="copyCardLinkBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg>
+                            <span>Copiar Enlace</span>
+                        </button>
+                    </div>
+
+                    <!-- Enlaces de Redes Sociales -->
+                    <div class="social-channels">
+                        <span class="social-header-text">Síguenos en redes sociales</span>
+                        <div class="social-icons-row">
+                            <!-- Facebook -->
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-circle-link fb-link" id="socialFbLink" aria-label="Facebook de la clínica" title="Facebook">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                            <!-- Instagram -->
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-circle-link ig-link" id="socialIgLink" aria-label="Instagram de la clínica" title="Instagram">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" class="social-circle-link wa-link" id="socialWaLink" aria-label="WhatsApp de la clínica" title="WhatsApp">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12.031 2C6.495 2 2 6.494 2 12.029c0 1.93.548 3.738 1.498 5.279L2 22l4.838-1.464c1.472.848 3.18 1.343 4.993 1.343 5.535 0 10.029-4.494 10.029-10.029C21.86 6.494 17.566 2 12.031 2zm5.748 14.363c-.244.686-1.419 1.319-1.956 1.385-.494.06-1.127.094-3.238-.778-2.695-1.114-4.417-3.864-4.551-4.043-.134-.179-1.092-1.455-1.092-2.776 0-1.321.688-1.97 1.015-2.298.244-.244.537-.306.717-.306.18 0 .36.002.518.01.168.008.393-.064.614.471.244.593.834 2.033.908 2.182.073.15.122.327.024.523-.097.196-.146.319-.292.489-.147.17-.309.38-.44.51-.147.147-.3.308-.13.6.17.292.756 1.249 1.623 2.022 1.115.993 2.054 1.3 2.347 1.447.292.146.463.122.634-.074.17-.196.732-.855.927-1.148.196-.293.39-.244.658-.147.268.098 1.708.806 2.001.953.293.146.488.22.56.342.074.122.074.708-.17 1.394z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Pie de Página Institucional -->
+        <footer class="app-footer">
+            <p class="footer-copy">© 2026 Clínica Dental Sonrisa Viva. Todos los derechos reservados.</p>
+            <p class="footer-sub">Arequipa, Perú • Dra. Lucía Fernández Rojas</p>
+        </footer>
+
+    </div> <!-- Fin .card-wrapper -->
+
+    <!-- ========================================================
+         SECCIÓN 10: BOTÓN FIJO INFERIOR "AGENDAR CITA" (WHATSAPP)
+         ======================================================== -->
+    <div class="fixed-floating-bar" id="fixedBar">
+        <a href="https://wa.me/51987654321?text=Hola%20Dra.%20Luc%C3%ADa,%20deseo%20agendar%20una%20cita%20odontol%C3%B3gica." target="_blank" rel="noopener noreferrer" class="fixed-cta-btn" id="fixedWhatsappBtn">
+            <span class="cta-ripple" aria-hidden="true"></span>
+            <svg class="cta-wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.031 2C6.495 2 2 6.494 2 12.029c0 1.93.548 3.738 1.498 5.279L2 22l4.838-1.464c1.472.848 3.18 1.343 4.993 1.343 5.535 0 10.029-4.494 10.029-10.029C21.86 6.494 17.566 2 12.031 2zm5.748 14.363c-.244.686-1.419 1.319-1.956 1.385-.494.06-1.127.094-3.238-.778-2.695-1.114-4.417-3.864-4.551-4.043-.134-.179-1.092-1.455-1.092-2.776 0-1.321.688-1.97 1.015-2.298.244-.244.537-.306.717-.306.18 0 .36.002.518.01.168.008.393-.064.614.471.244.593.834 2.033.908 2.182.073.15.122.327.024.523-.097.196-.146.319-.292.489-.147.17-.309.38-.44.51-.147.147-.3.308-.13.6.17.292.756 1.249 1.623 2.022 1.115.993 2.054 1.3 2.347 1.447.292.146.463.122.634-.074.17-.196.732-.855.927-1.148.196-.293.39-.244.658-.147.268.098 1.708.806 2.001.953.293.146.488.22.56.342.074.122.074.708-.17 1.394z"/>
+            </svg>
+            <span class="cta-label">Agendar Cita por WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- Modal Lightbox para Casos de la Galería -->
+    <div class="lightbox-modal" id="galleryLightbox" aria-hidden="true" role="dialog" aria-label="Vista ampliada de casos clínicos">
+        <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="lightbox-content">
+            <button type="button" class="lightbox-close-btn" id="closeLightboxBtn" aria-label="Cerrar modal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="lightbox-image-wrapper">
+                <img id="lightboxImg" src="assets/after.jpg" alt="Caso clínico ampliado" class="lightbox-img">
+            </div>
+            <div class="lightbox-caption">
+                <p class="lightbox-title">Rehabilitación Estética Oral</p>
+                <p class="lightbox-sub">Detalle de oclusión y carillas estéticas con pulido cerámico natural.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación Toast Flotante -->
+    <div class="app-toast" id="appToast" role="alert" aria-live="polite">
+        <svg class="toast-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span class="toast-message" id="toastMessage">Texto copiado correctamente</span>
+    </div>
+
+    <!-- Script Principal con CONFIG único -->
+    <script src="script.js"></script>
+</body>
+</html>
