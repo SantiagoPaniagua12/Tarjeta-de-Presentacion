@@ -1789,19 +1789,217 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   20. ANIMACIONES AL SCROLL & PREFERS-REDUCED-MOTION
+   20. RESPONSIVE DESIGN — SISTEMA COMPLETO MULTI-BREAKPOINT
    -------------------------------------------------------------------------- */
-.fade-in-on-scroll {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+
+/* ---- Teléfonos muy pequeños (< 360px) ---- */
+@media (max-width: 359px) {
+    .hero-cta-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .hero-btn {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 12px 14px;
+        text-align: left;
+        gap: 12px;
+    }
+
+    .hero-btn .btn-icon {
+        margin-bottom: 0;
+    }
+
+    .hero-btn .btn-text {
+        text-align: left;
+    }
+
+    .section {
+        padding: 24px 14px;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .hero-title {
+        font-size: 1.3rem;
+    }
+
+    .credibility-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .hero-utility-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .utility-pill {
+        justify-content: center;
+    }
+
+    .nav-pills {
+        padding: 6px 12px;
+        gap: 6px;
+    }
+
+    .nav-pill {
+        font-size: 0.72rem;
+        padding: 5px 10px;
+    }
+
+    .accordion-header {
+        padding: 12px;
+    }
+
+    .payments-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.fade-in-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+/* ---- Teléfonos estándar (360px – 480px) ---- */
+@media (max-width: 480px) {
+    .section {
+        padding: 28px 16px;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .hero-title {
+        font-size: 1.45rem;
+    }
+
+    .hero-cta-grid {
+        gap: 8px;
+    }
+
+    .hero-btn {
+        padding: 12px 6px;
+    }
+
+    .hero-btn .btn-label {
+        font-size: 0.78rem;
+    }
+
+    .hero-btn .btn-sub {
+        font-size: 0.64rem;
+    }
+
+    .accordion-header {
+        padding: 14px;
+    }
+
+    .comparison-container {
+        max-height: 260px;
+    }
+
+    .schedule-card {
+        padding: 16px;
+    }
+
+    .location-card {
+        padding: 0;
+    }
+
+    .payments-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/* ---- Landscape en móvil (orientación horizontal) ---- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-cta-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero-btn {
+        padding: 10px 6px;
+    }
+
+    .hero-btn .btn-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .section {
+        padding: 20px 16px;
+    }
+
+    .fixed-floating-bar {
+        padding: 8px 16px;
+        padding-bottom: max(8px, env(safe-area-inset-bottom));
+    }
+}
+
+/* ---- Tablets / pantallas medianas (520px+) ---- */
+@media (min-width: 520px) {
+    .hero-cta-grid {
+        gap: 12px;
+    }
+
+    .hero-btn {
+        padding: 16px 10px;
+    }
+
+    .hero-btn .btn-label {
+        font-size: 0.86rem;
+    }
+
+    .credibility-grid {
+        gap: 14px;
+    }
+
+    .symptoms-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .payments-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ---- Tablets grandes (768px+) ---- */
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 1.85rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .doctor-profile-card {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 24px;
+        align-items: start;
+    }
+
+    .doctor-image-container {
+        margin-bottom: 0;
+        aspect-ratio: auto;
+        height: 220px;
+    }
+
+    .credibility-grid {
+        grid-column: 1 / -1;
+    }
+
+    .hero-cta-grid {
+        gap: 14px;
+    }
+
+    .accordion-header {
+        padding: 18px 20px;
+    }
+}
+
+/* ---- Accesibilidad: movimiento reducido ---- */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1814,3 +2012,4 @@ body {
         transform: none !important;
     }
 }
+
