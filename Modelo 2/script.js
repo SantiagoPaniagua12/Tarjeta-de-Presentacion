@@ -20,9 +20,9 @@ const CONFIG = {
         doctorName: "Dra. Lucía Fernández Rojas",
         doctorTitle: "Cirujano Dentista, especialista en Rehabilitación Oral e Implantología",
         specialtyShort: "Cirujano Dentista • Especialista en Rehabilitación Oral e Implantología",
-        slogan: "Recuperamos tu sonrisa con tecnología y calidez humana",
+        slogan: "Tu sonrisa merece atención cercana, clara y sin apuros",
         cop: "COP 14205 • Registro Nacional de Especialista",
-        bio: "Con más de 12 años dedicados a la odontología avanzada en Arequipa, me enfoco en devolver no solo la estética dental, sino la seguridad y bienestar funcional de cada paciente mediante técnicas mínimamente invasivas y tecnología de vanguardia.",
+        bio: "Llevo más de 12 años acompañando a pacientes en Arequipa. Mi prioridad es escucharte, explicarte cada alternativa con claridad y encontrar un tratamiento que te ayude a volver a sonreír, hablar y comer con tranquilidad.",
         experienceYears: "+12",
         patientsTreated: "+3,500",
         postgraduate: "Rehabilitación Oral e Implantes"
@@ -191,6 +191,59 @@ function initStickyNavigation() {
 
     if (!pills.length || !sections.length) return;
 
+    // Permite recorrer el menú horizontal con la rueda normal del mouse.
+    // Al llegar a un extremo, la rueda vuelve a desplazar la página.
+    if (navBar) {
+        navBar.addEventListener('wheel', (event) => {
+            if (event.ctrlKey || navBar.scrollWidth <= navBar.clientWidth) return;
+
+            const delta = event.deltaX || event.deltaY;
+            const maxScrollLeft = navBar.scrollWidth - navBar.clientWidth;
+            const canScrollLeft = delta < 0 && navBar.scrollLeft > 0;
+            const canScrollRight = delta > 0 && navBar.scrollLeft < maxScrollLeft - 1;
+
+            if (canScrollLeft || canScrollRight) {
+                event.preventDefault();
+                navBar.scrollLeft += delta;
+            }
+        }, { passive: false });
+    }
+
+    const centerPill = (pill, behavior = 'smooth') => {
+        if (!navBar || !pill) return;
+
+        const pillRect = pill.getBoundingClientRect();
+        const navRect = navBar.getBoundingClientRect();
+        const targetLeft = navBar.scrollLeft + pillRect.left - navRect.left - ((navBar.clientWidth - pillRect.width) / 2);
+
+        navBar.scrollTo({ left: Math.max(0, targetLeft), behavior });
+    };
+
+    const setActivePill = (sectionId, behavior) => {
+        pills.forEach((pill) => {
+            const isActive = pill.dataset.section === sectionId;
+            pill.classList.toggle('active', isActive);
+            if (isActive) centerPill(pill, behavior);
+        });
+    };
+
+    pills.forEach((pill) => {
+        pill.addEventListener('click', (event) => {
+            const sectionId = pill.dataset.section;
+            const targetSection = document.getElementById(sectionId);
+            if (!targetSection) return;
+
+            event.preventDefault();
+            const stickyOffset = (document.querySelector('.top-nav')?.offsetHeight || 0)
+                + (navBar?.offsetHeight || 0) + 16;
+            const targetTop = window.scrollY + targetSection.getBoundingClientRect().top - stickyOffset;
+
+            window.scrollTo({ top: targetTop, behavior: 'smooth' });
+            window.history.replaceState(null, '', `#${sectionId}`);
+            setActivePill(sectionId, 'smooth');
+        });
+    });
+
     const observerOptions = {
         root: null,
         rootMargin: '-20% 0px -65% 0px',
@@ -201,20 +254,7 @@ function initStickyNavigation() {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 const currentId = entry.target.id;
-                pills.forEach((pill) => {
-                    if (pill.getAttribute('data-section') === currentId) {
-                        pill.classList.add('active');
-                        // Centrar la píldora en la barra desplazable horizontalmente
-                        if (navBar) {
-                            const pillRect = pill.getBoundingClientRect();
-                            const navRect = navBar.getBoundingClientRect();
-                            const scrollLeft = pill.offsetLeft - (navRect.width / 2) + (pillRect.width / 2);
-                            navBar.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-                        }
-                    } else {
-                        pill.classList.remove('active');
-                    }
-                });
+                setActivePill(currentId, 'smooth');
             }
         });
     }, observerOptions);
