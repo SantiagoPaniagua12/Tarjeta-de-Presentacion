@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Dental Sonrisa Viva | Dra. Lucía Fernández Rojas</title>
+    <meta name="description" content="Dra. Lucía Fernández Rojas, especialista en Rehabilitación Oral e Implantología en Arequipa. Agenda tu cita en línea, mira casos reales y resuelve tus dudas.">
+    <meta name="author" content="Dra. Lucía Fernández Rojas">
+    <meta name="theme-color" content="#0c233c">
+
+    <!-- Dominio propio: reemplazar por la URL final (ver README) -->
+    <link rel="canonical" href="https://www.sonrisavivadental.com/">
+    <link rel="alternate" hreflang="es" href="https://www.sonrisavivadental.com/">
+    <link rel="alternate" hreflang="en" href="https://www.sonrisavivadental.com/?lang=en">
+
+    <!-- Open Graph / Redes Sociales (vista previa al compartir por WhatsApp/Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sonrisavivadental.com/">
+    <meta property="og:title" content="Clínica Dental Sonrisa Viva | Dra. Lucía Fernández">
+    <meta property="og:description" content="Implantes, rehabilitación oral y diseño de sonrisa en Arequipa. Agenda tu cita en línea.">
+    <meta property="og:image" content="https://www.sonrisavivadental.com/assets/og-image.jpg">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dra. Lucía Fernández | Clínica Dental Sonrisa Viva">
+    <meta name="twitter:description" content="Implantes, rehabilitación oral y diseño de sonrisa en Arequipa.">
+    <meta name="twitter:image" content="https://www.sonrisavivadental.com/assets/og-image.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Schema.org JSON-LD: SEO local + reseñas + preguntas frecuentes -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "Clínica Dental Sonrisa Viva",
+      "url": "https://www.sonrisavivadental.com/",
+      "image": "https://www.sonrisavivadental.com/assets/og-image.jpg",
+      "description": "Cirugía Dentista, Rehabilitación Oral e Implantología en Arequipa.",
+      "telephone": "+51987654321",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Ejemplo 123, Of. 401",
+        "addressLocality": "Arequipa",
+        "addressRegion": "Arequipa",
+        "addressCountry": "PE"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": -16.409047, "longitude": -71.537451 },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "18:30" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:30", "closes": "12:30" }
+      ],
+      "availableLanguage": ["Spanish", "English"],
+      "employee": {
+        "@type": "Person",
+        "name": "Dra. Lucía Fernández Rojas",
+        "jobTitle": "Cirujano Dentista, Especialista en Rehabilitación Oral e Implantología"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Sprite de iconos reutilizables -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.031 2C6.495 2 2 6.494 2 12.029c0 1.93.548 3.738 1.498 5.279L2 22l4.838-1.464c1.472.848 3.18 1.343 4.993 1.343 5.535 0 10.029-4.494 10.029-10.029C21.86 6.494 17.566 2 12.031 2zm5.748 14.363c-.244.686-1.419 1.319-1.956 1.385-.494.06-1.127.094-3.238-.778-2.695-1.114-4.417-3.864-4.551-4.043-.134-.179-1.092-1.455-1.092-2.776 0-1.321.688-1.97 1.015-2.298.244-.244.537-.306.717-.306.18 0 .36.002.518.01.168.008.393-.064.614.471.244.593.834 2.033.908 2.182.073.15.122.327.024.523-.097.196-.146.319-.292.489-.147.17-.309.38-.44.51-.147.147-.3.308-.13.6.17.292.756 1.249 1.623 2.022 1.115.993 2.054 1.3 2.347 1.447.292.146.463.122.634-.074.17-.196.732-.855.927-1.148.196-.293.39-.244.658-.147.268.098 1.708.806 2.001.953.293.146.488.22.56.342.074.122.074.708-.17 1.394z"/></symbol>
+        <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+        <symbol id="i-ig" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+        <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></g></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/></g></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+        <symbol id="i-google" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24"><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="6 9 12 15 18 9"/></symbol>
+        <symbol id="i-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></g></symbol>
+    </svg>
+
+    <div class="card-wrapper" id="app">
+
+        <!-- Barra superior: idioma, tema y guardar contacto -->
+        <header class="top-nav">
+            <div class="nav-brand">
+                <span class="pulse-indicator" aria-hidden="true"></span>
+                <span id="businessShortName" class="brand-text">Sonrisa Viva</span>
+            </div>
+            <div class="nav-controls">
+                <button type="button" class="ctrl-btn lang-btn" id="langToggleBtn" data-i18n-aria="aria.lang" aria-label="Switch to English" title="English / Español">
+                    <span id="langToggleLabel">EN</span>
+                </button>
+                <button type="button" class="ctrl-btn" id="themeToggleBtn" data-i18n-aria="aria.theme" aria-label="Cambiar a modo oscuro o claro">
+                    <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button type="button" class="ctrl-btn" id="vcardDownloadNavBtn" data-i18n-aria="aria.vcard" aria-label="Guardar contacto en la agenda">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Navegación de secciones -->
+        <nav class="sticky-sections-nav" data-i18n-aria="aria.sections" aria-label="Navegación de secciones">
+            <ul class="nav-pills">
+                <li><a href="#hero" class="nav-pill active" data-section="hero" data-i18n="nav.home">Inicio</a></li>
+                <li><a href="#sobre-mi" class="nav-pill" data-section="sobre-mi" data-i18n="nav.doctor">Doctora</a></li>
+                <li><a href="#tratamientos" class="nav-pill" data-section="tratamientos" data-i18n="nav.treatments">Tratamientos</a></li>
+                <li><a href="#galeria" class="nav-pill" data-section="galeria" data-i18n="nav.cases">Casos</a></li>
+                <li><a href="#agendar" class="nav-pill" data-section="agendar" data-i18n="nav.book">Agendar</a></li>
+                <li><a href="#resenas" class="nav-pill" data-section="resenas" data-i18n="nav.reviews">Reseñas</a></li>
+                <li><a href="#preguntas" class="nav-pill" data-section="preguntas" data-i18n="nav.faq">Preguntas</a></li>
+                <li><a href="#ubicacion" class="nav-pill" data-section="ubicacion" data-i18n="nav.location">Ubicación</a></li>
+                <li><a href="#horarios" class="nav-pill" data-section="horarios" data-i18n="nav.hours">Horarios</a></li>
+                <li><a href="#pagos" class="nav-pill" data-section="pagos" data-i18n="nav.payments">Pagos</a></li>
+                <li><a href="#compartir" class="nav-pill" data-section="compartir" data-i18n="nav.share">Compartir</a></li>
+            </ul>
+        </nav>
+
+        <main id="mainContent">
+
+            <!-- ============ 1. HERO ============ -->
+            <section id="hero" class="section hero-section">
+                <div class="hero-header">
+                    <div class="clinic-logo-wrapper" aria-hidden="true">
+                        <svg class="clinic-logo-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="64" height="64" rx="20" fill="url(#logoGrad)" />
+                            <path d="M32 15C25.5 15 20 20 20 26.5C20 31.5 22 35 24 39.5C26 44 26.5 49 28.5 49C30.5 49 30.5 43 32 43C33.5 43 33.5 49 35.5 49C37.5 49 38 44 40 39.5C42 35 44 31.5 44 26.5C44 20 38.5 15 32 15Z" fill="white" fill-opacity="0.95" />
+                            <path d="M26 23C26 21 28.5 19 32 19C35.5 19 38 21 38 23" stroke="#0ea5e9" stroke-width="2.5" stroke-linecap="round" />
+                            <path d="M43 17L44.5 13L46 17L50 18.5L46 20L44.5 24L43 20L39 18.5L43 17Z" fill="#fbbf24" />
+                            <defs>
+                                <linearGradient id="logoGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#0c233c" /><stop offset="0.6" stop-color="#0284c7" /><stop offset="1" stop-color="#14b8a6" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="hero-titles">
+                        <span class="clinic-badge" id="heroClinicBadge">Clínica Dental Sonrisa Viva</span>
+                        <h1 class="hero-title" id="heroDoctorName">Dra. Lucía Fernández Rojas</h1>
+                        <p class="hero-specialty" id="heroDoctorSpecialty">Cirujano Dentista • Especialista en Rehabilitación Oral e Implantología</p>
+                    </div>
+                    <!-- Valoración de Google (prueba social) -->
+                    <a href="#resenas" class="hero-rating" id="heroRating">
+                        <svg class="hero-rating-g" aria-hidden="true"><use href="#i-google"/></svg>
+                        <span class="hero-rating-score" id="heroRatingScore">4.9</span>
+                        <span class="stars" id="heroRatingStars" aria-hidden="true"></span>
+                        <span class="hero-rating-count" id="heroRatingCount">127 reseñas</span>
+                    </a>
+                </div>
+
+                <div class="hero-quote">
+                    <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                    <p class="hero-slogan" id="heroSlogan"></p>
+                </div>
+
+                <div class="hero-cta-grid">
+                    <a href="tel:+51987654321" class="hero-btn btn-call" id="heroBtnCall" data-track="click_call">
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </span>
+                        <div class="btn-text">
+                            <span class="btn-label" data-i18n="hero.call">Llamar Ahora</span>
+                            <span class="btn-sub" data-i18n="hero.callSub">Atención Telefónica</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" class="hero-btn btn-whatsapp" id="heroBtnWhatsapp" data-track="click_whatsapp">
+                        <span class="btn-icon"><svg aria-hidden="true"><use href="#i-wa"/></svg></span>
+                        <div class="btn-text">
+                            <span class="btn-label">WhatsApp</span>
+                            <span class="btn-sub" data-i18n="hero.waSub">Consulta Inmediata</span>
+                        </div>
+                    </a>
+                    <a href="#agendar" class="hero-btn btn-book" id="heroBtnBook" data-track="click_book_hero">
+                        <span class="btn-icon"><svg aria-hidden="true"><use href="#i-calendar"/></svg></span>
+                        <div class="btn-text">
+                            <span class="btn-label" data-i18n="hero.book">Agendar Cita</span>
+                            <span class="btn-sub" data-i18n="hero.bookSub">Elige día y hora</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hero-utility-row">
+                    <button type="button" class="utility-pill" id="heroSaveVCardBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle>
+                            <line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line>
+                        </svg>
+                        <span data-i18n="hero.save">Guardar en Contactos</span>
+                    </button>
+                    <a href="#ubicacion" class="utility-pill" id="heroMapsPill" data-track="click_maps_hero">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span data-i18n="hero.maps">Cómo Llegar</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ============ 2. SOBRE LA DOCTORA ============ -->
+            <section id="sobre-mi" class="section about-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="about.tag">Conóceme</span></div>
+                <h2 class="section-title" data-i18n="about.title">Sobre la Doctora</h2>
+
+                <div class="doctor-profile-card">
+                    <div class="doctor-image-container">
+                        <img src="assets/doctora.jpg" alt="Dra. Lucía Fernández Rojas" class="doctor-photo" loading="lazy" width="640" height="640">
+                        <div class="doctor-verified-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span data-i18n="about.verified">COP Habilitado</span>
+                        </div>
+                    </div>
+                    <div class="doctor-bio-body">
+                        <h3 class="doctor-full-name" id="aboutDoctorName">Dra. Lucía Fernández Rojas</h3>
+                        <p class="doctor-reg" id="aboutDoctorReg"></p>
+                        <p class="doctor-description" id="aboutDoctorBio"></p>
+                        <p class="doctor-langs">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            <span data-i18n="about.langs">Atención en español e inglés</span>
+                        </p>
+                    </div>
+                    <div class="credibility-grid">
+                        <div class="credibility-card">
+                            <span class="cred-number" id="credExp">+12</span>
+                            <span class="cred-label" data-i18n="about.years">Años de Experiencia</span>
+                        </div>
+                        <div class="credibility-card">
+                            <span class="cred-number" id="credPatients">+3,500</span>
+                            <span class="cred-label" data-i18n="about.patients">Sonrisas Renovadas</span>
+                        </div>
+                        <div class="credibility-card">
+                            <span class="cred-badge" data-i18n="about.specialty">Especialidad</span>
+                            <span class="cred-label" id="credStudies"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ 3. ¿CUÁNDO ACUDIR? ============ -->
+            <section id="cuando-acudir" class="section symptoms-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="when.tag">Diagnóstico Oportuno</span></div>
+                <h2 class="section-title" data-i18n="when.title">¿Cuándo acudir a consulta?</h2>
+                <p class="section-subtitle" data-i18n="when.sub">Si te reconoces en alguna de estas situaciones, conversemos. Una evaluación a tiempo puede hacer una gran diferencia.</p>
+
+                <div class="symptoms-grid">
+                    <article class="symptom-card">
+                        <div class="symptom-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8 2 5 6 5 11c0 4 2 8 4 11 1 0 2-3 3-3s2 3 3 3c2-3 4-7 4-11 0-5-3-9-7-9z"></path></svg>
+                        </div>
+                        <div class="symptom-content">
+                            <h3 class="symptom-title" data-i18n="when.s1t">Pérdida de Dientes</h3>
+                            <p class="symptom-desc" data-i18n="when.s1d">Ausencia de una o varias piezas dentales que dificulta la masticación o afecta tu confianza al hablar.</p>
+                        </div>
+                    </article>
+                    <article class="symptom-card">
+                        <div class="symptom-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="2" x2="12" y2="7"></line><circle cx="12" cy="14" r="5"></circle><path d="M12 19v3"></path><line x1="8" y1="22" x2="16" y2="22"></line></svg>
+                        </div>
+                        <div class="symptom-content">
+                            <h3 class="symptom-title" data-i18n="when.s2t">Prótesis Inestables</h3>
+                            <p class="symptom-desc" data-i18n="when.s2d">Molestia o movimiento en dentaduras removibles que requieren fijación segura mediante implantes.</p>
+                        </div>
+                    </article>
+                    <article class="symptom-card">
+                        <div class="symptom-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                        </div>
+                        <div class="symptom-content">
+                            <h3 class="symptom-title" data-i18n="when.s3t">Reconstrucción de Sonrisa</h3>
+                            <p class="symptom-desc" data-i18n="when.s3d">Dientes pigmentados, desalineados o fracturados que buscas transformar con carillas y diseño estético digital.</p>
+                        </div>
+                    </article>
+                    <article class="symptom-card">
+                        <div class="symptom-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        </div>
+                        <div class="symptom-content">
+                            <h3 class="symptom-title" data-i18n="when.s4t">Desgaste Severo & Bruxismo</h3>
+                            <p class="symptom-desc" data-i18n="when.s4d">Apretamiento dental nocturno, dolor en la mandíbula o dientes reducidos en tamaño que requieren rehabilitación oclusal.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ============ 4. TRATAMIENTOS (generado desde CONFIG) ============ -->
+            <section id="tratamientos" class="section treatments-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="treat.tag">Servicios Dentales</span></div>
+                <h2 class="section-title" data-i18n="treat.title">Tratamientos Especializados</h2>
+                <p class="section-subtitle" data-i18n="treat.sub">Cada tratamiento se planifica contigo, con información clara y cuidando tanto tu comodidad como el resultado.</p>
+                <div class="accordion-container" id="treatmentsAccordion"></div>
+            </section>
+
+            <!-- ============ 5. GALERÍA: 5 CASOS ANTES / DESPUÉS ============ -->
+            <section id="galeria" class="section gallery-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="gallery.tag">Resultados Clínicos</span></div>
+                <h2 class="section-title" data-i18n="gallery.title">Casos Clínicos</h2>
+                <p class="section-subtitle" data-i18n="gallery.sub">Elige un caso y mueve la barra para comparar el antes y el después.</p>
+
+                <div class="case-tabs" id="caseTabs" role="tablist"></div>
+
+                <div class="comparison-card">
+                    <div class="comparison-container" id="comparisonSliderContainer">
+                        <img src="assets/casos/caso-1-despues.jpg" alt="" id="afterImg" class="comparison-img after-image" width="960" height="720">
+                        <span class="slider-badge badge-after" data-i18n="gallery.after">DESPUÉS</span>
+                        <div class="before-image-wrapper" id="beforeImageWrapper">
+                            <img src="assets/casos/caso-1-antes.jpg" alt="" id="beforeImg" class="comparison-img before-image" width="960" height="720">
+                            <span class="slider-badge badge-before" data-i18n="gallery.before">ANTES</span>
+                        </div>
+                        <div class="slider-divider" id="sliderDivider">
+                            <div class="slider-handle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </div>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="comparison-range" id="comparisonRange" data-i18n-aria="aria.slider" aria-label="Comparar antes y después">
+                    </div>
+
+                    <div class="comparison-footer">
+                        <div class="comparison-info">
+                            <span class="case-tag" id="caseCounter">Caso 1 de 5</span>
+                            <span class="case-title" id="caseTitle"></span>
+                            <span class="case-desc" id="caseDesc"></span>
+                        </div>
+                        <div class="case-nav">
+                            <button type="button" class="case-nav-btn" id="casePrevBtn" data-i18n-aria="aria.prevCase" aria-label="Caso anterior">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <button type="button" class="case-nav-btn" id="caseNextBtn" data-i18n-aria="aria.nextCase" aria-label="Caso siguiente">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                            <button type="button" class="lightbox-open-btn" id="openLightboxBtn" data-i18n-aria="aria.zoom" aria-label="Ampliar imagen">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline>
+                                    <line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <a href="#agendar" class="gallery-cta" data-track="click_book_gallery">
+                    <svg aria-hidden="true"><use href="#i-calendar"/></svg>
+                    <span data-i18n="gallery.cta">Quiero un resultado así: agendar evaluación</span>
+                </a>
+            </section>
+
+            <!-- ============ 6. AGENDAR CITA (FORMULARIO → WHATSAPP) ============ -->
+            <section id="agendar" class="section booking-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="book.tag">Cita en Línea</span></div>
+                <h2 class="section-title" data-i18n="book.title">Agenda tu Cita</h2>
+                <p class="section-subtitle" data-i18n="book.sub">Completa tus datos y te enviamos directo a WhatsApp con tu solicitud lista. Te confirmamos la cita en minutos.</p>
+
+                <form class="booking-card" id="bookingForm" novalidate>
+                    <div class="form-field">
+                        <label for="bkName" class="form-label" data-i18n="book.name">Nombre completo</label>
+                        <input type="text" id="bkName" name="name" class="form-input" autocomplete="name" required maxlength="80" data-i18n-ph="book.namePh" placeholder="Ej. María Quispe">
+                        <span class="form-error" data-error-for="bkName"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="bkTreatment" class="form-label" data-i18n="book.treatment">Motivo de la consulta</label>
+                        <select id="bkTreatment" name="treatment" class="form-input" required></select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="bkDate" class="form-label" data-i18n="book.date">Fecha</label>
+                            <input type="date" id="bkDate" name="date" class="form-input" required>
+                            <span class="form-error" data-error-for="bkDate"></span>
+                        </div>
+                        <div class="form-field">
+                            <label for="bkTime" class="form-label" data-i18n="book.time">Hora</label>
+                            <select id="bkTime" name="time" class="form-input" required disabled></select>
+                            <span class="form-error" data-error-for="bkTime"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="bkNotes" class="form-label">
+                            <span data-i18n="book.notes">Comentario</span>
+                            <span class="form-optional" data-i18n="book.optional">(opcional)</span>
+                        </label>
+                        <textarea id="bkNotes" name="notes" class="form-input" rows="2" maxlength="300" data-i18n-ph="book.notesPh" placeholder="Ej. Tengo dolor en una muela desde hace una semana"></textarea>
+                    </div>
+
+                    <label class="form-check">
+                        <input type="checkbox" id="bkFirstVisit" name="firstVisit" checked>
+                        <span data-i18n="book.first">Es mi primera visita</span>
+                    </label>
+
+                    <button type="submit" class="booking-submit" data-track="booking_submit">
+                        <svg aria-hidden="true"><use href="#i-wa"/></svg>
+                        <span data-i18n="book.submit">Solicitar cita por WhatsApp</span>
+                    </button>
+                    <p class="booking-note" data-i18n="book.note">Sin costo ni compromiso. Tus datos solo se usan para coordinar tu cita.</p>
+                </form>
+            </section>
+
+            <!-- ============ 7. RESEÑAS DE PACIENTES ============ -->
+            <section id="resenas" class="section reviews-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="reviews.tag">Testimonios</span></div>
+                <h2 class="section-title" data-i18n="reviews.title">Lo que dicen nuestros pacientes</h2>
+
+                <div class="reviews-summary">
+                    <div class="reviews-score-box">
+                        <span class="reviews-score" id="reviewsScore">4.9</span>
+                        <span class="stars stars-lg" id="reviewsStars" aria-hidden="true"></span>
+                    </div>
+                    <div class="reviews-summary-text">
+                        <span class="reviews-google">
+                            <svg aria-hidden="true"><use href="#i-google"/></svg>
+                            <span data-i18n="reviews.google">Calificación en Google</span>
+                        </span>
+                        <span class="reviews-count" id="reviewsCount">127 reseñas verificadas</span>
+                    </div>
+                </div>
+
+                <div class="reviews-track" id="reviewsTrack" tabindex="0" data-i18n-aria="aria.reviews" aria-label="Reseñas de pacientes"></div>
+
+                <div class="reviews-actions">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="reviewsAllBtn" data-track="click_reviews_google">
+                        <svg aria-hidden="true"><use href="#i-google"/></svg>
+                        <span data-i18n="reviews.all">Ver todas en Google</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-action" id="reviewsWriteBtn" data-track="click_write_review">
+                        <svg aria-hidden="true"><use href="#i-star"/></svg>
+                        <span data-i18n="reviews.write">Dejar mi reseña</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ============ 8. PREGUNTAS FRECUENTES ============ -->
+            <section id="preguntas" class="section faq-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="faq.tag">Resolvemos tus dudas</span></div>
+                <h2 class="section-title" data-i18n="faq.title">Preguntas Frecuentes</h2>
+                <p class="section-subtitle" data-i18n="faq.sub">Las dudas más comunes antes de empezar un tratamiento.</p>
+                <div class="accordion-container" id="faqAccordion"></div>
+                <p class="faq-more">
+                    <span data-i18n="faq.more">¿Tienes otra pregunta?</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" id="faqWaLink" data-track="click_whatsapp_faq" data-i18n="faq.moreLink">Escríbenos por WhatsApp</a>
+                </p>
+            </section>
+
+            <!-- ============ 9. UBICACIÓN ============ -->
+            <section id="ubicacion" class="section location-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="loc.tag">Encuéntranos</span></div>
+                <h2 class="section-title" data-i18n="loc.title">Ubicación del Consultorio</h2>
+                <p class="section-subtitle" data-i18n="loc.sub">Estamos en un espacio cómodo y de fácil acceso para que llegues sin complicaciones.</p>
+
+                <div class="location-card">
+                    <div class="map-container">
+                        <iframe id="mapIframe" data-i18n-title="loc.mapTitle" title="Mapa de ubicación del consultorio"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.424754593671!2d-71.53963972410885!3d-16.409047038167735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a59fe05e551%3A0x1142f36d10fa8c82!2sPlaza%20de%20Armas%20de%20Arequipa!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe"
+                            width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="location-details">
+                        <div class="address-box">
+                            <div class="address-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <div class="address-content">
+                                <span class="address-title" data-i18n="loc.address">Dirección</span>
+                                <p class="address-text" id="locationAddressText"></p>
+                                <span class="address-note" id="locationAddressNote"></span>
+                            </div>
+                        </div>
+                        <div class="location-actions">
+                            <button type="button" class="loc-btn copy-address-btn" id="copyAddressBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <span data-i18n="loc.copy">Copiar Dirección</span>
+                            </button>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="loc-btn gmaps-btn" id="openGmapsLink" data-track="click_maps">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+                                <span data-i18n="loc.open">Abrir en Google Maps</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ 10. HORARIOS (EN VIVO) ============ -->
+            <section id="horarios" class="section schedule-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="hours.tag">Disponibilidad</span></div>
+                <h2 class="section-title" data-i18n="hours.title">Horarios de Atención</h2>
+                <div class="schedule-card">
+                    <div class="live-status-header">
+                        <div class="status-indicator-badge" id="liveStatusBadge">
+                            <span class="status-live-dot"></span>
+                            <span class="status-live-text" id="liveStatusText">…</span>
+                        </div>
+                        <span class="timezone-note" data-i18n="hours.tz">Hora de Perú (GMT-5)</span>
+                    </div>
+                    <ul class="schedule-list" id="scheduleDaysList"></ul>
+                    <div class="schedule-footer-note">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        <span data-i18n="hours.note">Modalidad: Atención personalizada previa cita programada.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ 11. FORMAS DE PAGO ============ -->
+            <section id="pagos" class="section payment-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="pay.tag">Facilidades</span></div>
+                <h2 class="section-title" data-i18n="pay.title">Formas de Pago</h2>
+                <p class="section-subtitle" data-i18n="pay.sub">Elige la alternativa que te resulte más cómoda.</p>
+                <div class="payments-grid">
+                    <div class="payment-card">
+                        <div class="payment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg></div>
+                        <span class="payment-name" data-i18n="pay.cash">Efectivo</span>
+                        <span class="payment-desc" data-i18n="pay.cashD">Soles y Dólares</span>
+                    </div>
+                    <div class="payment-card">
+                        <div class="payment-icon yape-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
+                        <span class="payment-name">Yape & Plin</span>
+                        <span class="payment-desc" data-i18n="pay.walletD">Billeteras Móviles</span>
+                    </div>
+                    <div class="payment-card">
+                        <div class="payment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg></div>
+                        <span class="payment-name" data-i18n="pay.transfer">Transferencias</span>
+                        <span class="payment-desc">BCP, BBVA, Interbank</span>
+                    </div>
+                    <div class="payment-card">
+                        <div class="payment-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></div>
+                        <span class="payment-name" data-i18n="pay.cards">Tarjetas</span>
+                        <span class="payment-desc" data-i18n="pay.cardsD">Crédito y Débito</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ 12. COMPARTIR (QR REAL + REDES) ============ -->
+            <section id="compartir" class="section share-section">
+                <div class="section-tag-wrapper"><span class="section-tag" data-i18n="share.tag">Conecta & Comparte</span></div>
+                <h2 class="section-title" data-i18n="share.title">Comparte Esta Tarjeta</h2>
+                <p class="section-subtitle" data-i18n="share.sub">Envíala a quien la necesite o escanea el código para abrirla en otro celular.</p>
+
+                <div class="share-card">
+                    <div class="qr-box">
+                        <div class="qr-canvas-wrapper">
+                            <canvas id="qrCanvas" width="340" height="340" data-i18n-aria="aria.qr" aria-label="Código QR de esta tarjeta"></canvas>
+                        </div>
+                        <span class="qr-caption" data-i18n="share.qrCaption">Escanéalo con la cámara del celular</span>
+                        <button type="button" class="qr-download-btn" id="qrDownloadBtn" data-track="qr_download">
+                            <svg aria-hidden="true"><use href="#i-download"/></svg>
+                            <span data-i18n="share.qrDownload">Descargar QR para imprimir</span>
+                        </button>
+                    </div>
+
+                    <div class="share-btn-group">
+                        <button type="button" class="btn btn-action" id="shareNativeBtn" data-track="share_native">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                            <span data-i18n="share.share">Compartir</span>
+                        </button>
+                        <button type="button" class="btn btn-outline" id="copyCardLinkBtn" data-track="share_copy">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                            <span data-i18n="share.copy">Copiar Enlace</span>
+                        </button>
+                    </div>
+
+                    <div class="share-networks">
+                        <span class="social-header-text" data-i18n="share.via">Enviar por</span>
+                        <div class="social-icons-row">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-circle-link wa-link" data-share="whatsapp" aria-label="WhatsApp" title="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-circle-link fb-link" data-share="facebook" aria-label="Facebook" title="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-circle-link x-link" data-share="x" aria-label="X (Twitter)" title="X"><svg aria-hidden="true"><use href="#i-x"/></svg></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-circle-link tg-link" data-share="telegram" aria-label="Telegram" title="Telegram"><svg aria-hidden="true"><use href="#i-tg"/></svg></a>
+                            <a href="#" class="social-circle-link mail-link" data-share="email" aria-label="Email" title="Email"><svg aria-hidden="true"><use href="#i-mail"/></svg></a>
+                        </div>
+                    </div>
+
+                    <div class="social-channels">
+                        <span class="social-header-text" data-i18n="share.follow">Síguenos en redes sociales</span>
+                        <div class="social-icons-row">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-circle-link fb-link" id="socialFbLink" aria-label="Facebook" data-track="click_facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-circle-link ig-link" id="socialIgLink" aria-label="Instagram" data-track="click_instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-circle-link wa-link" id="socialWaLink" aria-label="WhatsApp" data-track="click_whatsapp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p class="footer-copy">© <span id="footerYear">2026</span> <span id="footerClinic">Clínica Dental Sonrisa Viva</span>. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+            <p class="footer-sub" id="footerSub">Arequipa, Perú • Dra. Lucía Fernández Rojas</p>
+        </footer>
+    </div>
+
+    <!-- Barra fija inferior: lleva al formulario de cita -->
+    <div class="fixed-floating-bar" id="fixedBar">
+        <a href="#agendar" class="fixed-cta-btn" id="fixedBookBtn" data-track="click_book_fixed">
+            <span class="cta-ripple" aria-hidden="true"></span>
+            <svg class="cta-wa-icon" aria-hidden="true"><use href="#i-calendar"/></svg>
+            <span class="cta-label" data-i18n="fixed.cta">Agendar mi Cita</span>
+        </a>
+    </div>
+
+    <!-- Lightbox de casos clínicos -->
+    <div class="lightbox-modal" id="galleryLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+        <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="lightbox-content">
+            <button type="button" class="lightbox-close-btn" id="closeLightboxBtn" data-i18n-aria="aria.close" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="lightbox-image-wrapper">
+                <img id="lightboxImg" src="assets/casos/caso-1-despues.jpg" alt="" class="lightbox-img">
+                <div class="lightbox-toggle" role="group">
+                    <button type="button" class="lb-toggle-btn" data-view="before" data-i18n="gallery.beforeShort">Antes</button>
+                    <button type="button" class="lb-toggle-btn active" data-view="after" data-i18n="gallery.afterShort">Después</button>
+                </div>
+            </div>
+            <div class="lightbox-caption">
+                <p class="lightbox-title" id="lightboxTitle"></p>
+                <p class="lightbox-sub" id="lightboxSub"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-toast" id="appToast" role="status" aria-live="polite">
+        <svg class="toast-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span class="toast-message" id="toastMessage"></span>
+    </div>
+
+    <!-- Librería QR (qrcode-generator 1.4.4, MIT, incluida localmente para funcionar sin internet) -->
+    <script src="js/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
