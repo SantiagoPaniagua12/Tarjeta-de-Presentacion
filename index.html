@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Tarjetas de presentación digitales profesionales e interactivas — Santiago Paniagua & Clínica Dental Sonrisa Viva.">
+        content="Tarjetas de presentación digitales profesionales e interactivas — Santiago Paniagua, Clínica Dental Sonrisa Viva y Sonrisa Viva PRO con agenda de citas.">
     <meta name="theme-color" content="#0a0a1a">
     <title>Tarjetas Digitales | Selecciona tu Tarjeta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -599,6 +599,36 @@
 
             .card-description {
                 font-size: 0.95rem
+            }
+        }
+
+        /* ---- Escritorio ancho (1200px+): las 3 tarjetas en una fila ---- */
+        @media (min-width: 1200px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 1180px;
+                align-items: stretch
+            }
+
+            .sel-card {
+                padding: 36px 30px
+            }
+
+            .card-inner {
+                display: flex;
+                flex-direction: column;
+                flex: 1
+            }
+
+            .card-cta {
+                margin-top: auto
+            }
+        }
+
+        /* ---- Tablets: la 3.ª tarjeta ocupa todo el ancho para no quedar sola ---- */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .sel-card:nth-child(3):last-child {
+                grid-column: 1 / -1
             }
         }
 
