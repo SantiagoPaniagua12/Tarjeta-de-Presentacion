@@ -16,6 +16,7 @@ Es la versión mejorada del Modelo 2, pensada para venderse como paquete de **S/
 | QR para imprimir | Sección **Compartir** | QR real y escaneable. Descarga un PNG de 1200×1500 con logo, nombre y dominio, listo para imprimir |
 | Estadísticas de visitas | `CONFIG.analytics` | Google Analytics 4: visitas, clics a WhatsApp, llamadas, citas enviadas, casos vistos y más |
 | 3 meses de cambios gratis | Servicio | Todo se edita en el objeto `CONFIG` de `script.js` |
+| **Extra:** conexión con el sistema del consultorio | `CONFIG.bookingApi` | Muestra solo las horas realmente libres y guarda la cita como "pendiente" en el sistema Laravel. Ver [INTEGRACION-LARAVEL.md](INTEGRACION-LARAVEL.md) |
 
 **Mejoras técnicas frente al Modelo 2:**
 - El QR del Modelo 2 era decorativo y no se podía escanear. Ahora es real y usa `js/qrcode.min.js` (incluido localmente, MIT).
@@ -92,7 +93,8 @@ Eventos que se registran automáticamente:
 | Evento | Cuándo |
 |---|---|
 | `click_whatsapp`, `click_call`, `click_maps` | Clic en WhatsApp, llamar o mapa |
-| `booking_submit` | Cita enviada desde el formulario (incluye el tratamiento) |
+| `booking_submit` | Cita enviada desde el formulario (incluye el tratamiento y el modo: `system` o `whatsapp`) |
+| `booking_saved`, `booking_slot_taken`, `booking_api_error`, `booking_api_down` | Con el sistema conectado: cita guardada, hora ya ocupada, error al guardar o sistema caído (se usó WhatsApp) |
 | `click_whatsapp_treatment` | Consulta por WhatsApp desde un tratamiento |
 | `case_view` | Ve un caso antes/después |
 | `faq_open` | Abre una pregunta frecuente |
@@ -115,6 +117,7 @@ Modelo 3/
 ├── index.html          # Estructura, SEO local (Schema.org) y textos en español
 ├── styles.css          # Estilos del Modelo 2 + componentes nuevos
 ├── script.js           # CONFIG, traducciones, agenda, galería, QR, estadísticas
+├── INTEGRACION-LARAVEL.md  # Cómo conectar la agenda con el sistema del consultorio
 ├── js/qrcode.min.js    # Generador de QR (qrcode-generator 1.4.4, MIT)
 └── assets/
     ├── doctora.jpg
