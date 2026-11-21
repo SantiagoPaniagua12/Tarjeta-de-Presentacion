@@ -2339,6 +2339,67 @@ textarea.form-input { resize: vertical; min-height: 64px; }
     text-align: center;
     margin-top: -4px;
 }
+.booking-submit:disabled { opacity: 0.7; cursor: progress; transform: none; }
+/* Con el sistema conectado el botón reserva (no abre WhatsApp): color de marca */
+.booking-card.is-system .booking-submit {
+    background: linear-gradient(135deg, var(--brand-teal) 0%, #0369a1 100%);
+    box-shadow: 0 10px 22px -6px rgba(2, 132, 199, 0.5);
+}
+.booking-card.is-system .booking-submit > svg { display: none; }
+
+/* Campo trampa anti-bots: fuera de la pantalla, no visible para personas */
+.form-hp {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.booking-result {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    background-color: rgba(16, 185, 129, 0.08);
+    text-align: center;
+}
+.booking-result[hidden] { display: none; }
+.booking-result.is-fallback {
+    border-color: rgba(245, 158, 11, 0.4);
+    background-color: rgba(245, 158, 11, 0.08);
+}
+.booking-result-title {
+    font-family: var(--font-heading);
+    font-size: 1.02rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+.booking-result-text { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.5; }
+.booking-result-code {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+}
+.booking-result-wa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+    padding: 12px 18px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.92rem;
+    text-decoration: none;
+}
+.booking-result-wa svg { width: 20px; height: 20px; flex-shrink: 0; }
+.booking-result-wa:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 3px; }
 
 /* ---- Reseñas ---- */
 .reviews-summary {

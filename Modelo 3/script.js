@@ -83,6 +83,15 @@ const CONFIG = {
         ga4MeasurementId: ""
     },
 
+    // Conexión con el sistema del consultorio (Laravel). Ver INTEGRACION-LARAVEL.md.
+    // Vacío = la agenda usa solo `schedule` y envía la solicitud por WhatsApp.
+    // Ejemplo: "https://sistema.sonrisavivadental.com/api/tarjeta"
+    bookingApi: {
+        url: "",
+        timeoutMs: 6000,    // Si el sistema no responde en este tiempo, se usa el plan B (WhatsApp)
+        cacheSeconds: 60    // Evita consultar de nuevo la misma fecha al cambiar de idioma
+    },
+
     schedule: {
         timezone: "America/Lima",
         slotMinutes: 30,          // Duración de cada turno en el formulario de citas
@@ -339,6 +348,8 @@ const I18N_EN = {
     "book.sub": "Fill in your details and we'll take you straight to WhatsApp with your request ready. We confirm within minutes.",
     "book.name": "Full name",
     "book.namePh": "e.g. John Smith",
+    "book.phone": "Mobile / WhatsApp",
+    "book.phonePh": "e.g. +1 555 123 4567",
     "book.treatment": "Reason for visit",
     "book.date": "Date",
     "book.time": "Time",
@@ -419,6 +430,19 @@ const UI = {
         errDateClosed: "Ese día no atendemos. Elige otra fecha.",
         errDatePast: "Elige una fecha a partir de hoy.",
         errTime: "Elige un horario disponible.",
+        errPhone: "Escribe un celular válido (mínimo 9 dígitos).",
+        errSlotTaken: "Esa hora acaba de ocuparse. Elige otra, por favor.",
+        loadingSlots: "Consultando horarios libres…",
+        booking: "Reservando tu cita…",
+        bookedTitle: "¡Cita reservada, {name}!",
+        bookedText: "Separamos tu cita del {date} a las {time}. Queda pendiente de confirmación: envíanos el mensaje por WhatsApp y te la confirmamos.",
+        bookedCode: "Código de reserva",
+        bookingFallbackTitle: "Envíanos tu solicitud por WhatsApp",
+        bookingFallbackText: "No pudimos registrar la cita en línea en este momento. Envíanos tu solicitud por WhatsApp y te la confirmamos.",
+        bookingWaBtn: "Enviar por WhatsApp",
+        submitApi: "Reservar mi cita",
+        subApi: "Elige un horario libre de la agenda del consultorio y resérvalo al instante. Luego nos confirmas por WhatsApp.",
+        waPhone: "Celular",
         bookingOpened: "Abriendo WhatsApp con tu solicitud…",
         waBooking: "Hola {doctor} 👋, quisiera agendar una cita:",
         waName: "Nombre",
@@ -464,6 +488,19 @@ const UI = {
         errDateClosed: "We're closed that day. Please pick another date.",
         errDatePast: "Please pick a date from today onward.",
         errTime: "Please pick an available time.",
+        errPhone: "Please enter a valid phone number.",
+        errSlotTaken: "That time was just taken. Please pick another one.",
+        loadingSlots: "Checking available times…",
+        booking: "Booking your appointment…",
+        bookedTitle: "Appointment reserved, {name}!",
+        bookedText: "We've held your appointment on {date} at {time}. It's pending confirmation: send us the WhatsApp message and we'll confirm it.",
+        bookedCode: "Booking code",
+        bookingFallbackTitle: "Send us your request on WhatsApp",
+        bookingFallbackText: "We couldn't register your appointment online right now. Send us your request on WhatsApp and we'll confirm it.",
+        bookingWaBtn: "Send via WhatsApp",
+        submitApi: "Book my appointment",
+        subApi: "Pick a free time from the clinic's live schedule and book it instantly. Then confirm with us on WhatsApp.",
+        waPhone: "Phone",
         bookingOpened: "Opening WhatsApp with your request…",
         waBooking: "Hello {doctor} 👋, I'd like to book an appointment:",
         waName: "Name",
@@ -490,7 +527,9 @@ const UI = {
 // ==========================================================================
 const state = {
     lang: "es",
-    caseIndex: 0
+    caseIndex: 0,
+    apiDown: false,      // true si el sistema no respondió: se usa el plan B (WhatsApp directo)
+    slotsRequest: 0      // evita que una respuesta lenta pise a una más reciente
 };
 
 const I18N_ES = {}; // Se llena leyendo el HTML original
@@ -668,6 +707,7 @@ function applyLanguage(lang, { silent = false } = {}) {
     renderScheduleList();
     initLiveSchedule();
     populateTreatmentSelect();
+    syncBookingMode();
     refreshTimeSlots();
     updateShareLinks();
 
@@ -1100,8 +1140,12 @@ function initLiveSchedule() {
 }
 
 // ==========================================================================
-// 15. AGENDA DE CITAS → WHATSAPP
+// 15. AGENDA DE CITAS (SISTEMA DEL CONSULTORIO + WHATSAPP)
 // ==========================================================================
+// Con `CONFIG.bookingApi.url` configurado, las horas libres salen del sistema
+// del consultorio y la cita se guarda allí como "pendiente". Si el sistema no
+// está configurado o no responde, todo funciona como antes: horario de
+// `CONFIG.schedule` y solicitud directa por WhatsApp (plan B).
 function initBookingForm() {
     const form = $("#bookingForm");
     const dateInput = $("#bkDate");
@@ -1118,38 +1162,223 @@ function initBookingForm() {
         validateDate(true);
         refreshTimeSlots();
     });
+    // Cada tratamiento dura distinto: con el sistema conectado cambian las horas libres
+    $("#bkTreatment").addEventListener("change", () => { if (apiEnabled()) refreshTimeSlots(); });
     $("#bkTime").addEventListener("change", () => clearError("bkTime"));
     $("#bkName").addEventListener("input", () => clearError("bkName"));
+    $("#bkPhone").addEventListener("input", () => clearError("bkPhone"));
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        if (!validateBooking()) return;
+        if (form.classList.contains("is-busy") || !validateBooking()) return;
 
-        const data = {
-            name: $("#bkName").value.trim(),
-            treatment: $("#bkTreatment").selectedOptions[0]?.textContent || "",
-            date: formatIsoDate(dateInput.value),
-            time: $("#bkTime").value,
-            first: $("#bkFirstVisit").checked,
-            notes: $("#bkNotes").value.trim()
-        };
+        const data = readBookingForm();
+        hideBookingResult();
+        track("booking_submit", {
+            treatment: data.treatmentLabel,
+            first_visit: data.first,
+            mode: apiEnabled() ? "system" : "whatsapp"
+        });
 
-        const lines = [
-            ui("waBooking", { doctor: CONFIG.business.doctorFirstName }),
-            "",
-            `• *${ui("waName")}:* ${data.name}`,
-            `• *${ui("waTreatment")}:* ${data.treatment}`,
-            `• *${ui("waDate")}:* ${data.date}`,
-            `• *${ui("waTime")}:* ${data.time}`,
-            `• *${ui("waFirst")}:* ${data.first ? ui("yes") : ui("no")}`
-        ];
-        if (data.notes) lines.push(`• *${ui("waNotes")}:* ${data.notes}`);
-        lines.push("", ui("waFooter"));
+        // Plan B: sin sistema (o caído) se abre WhatsApp directamente
+        if (!apiEnabled()) {
+            showToast(ui("bookingOpened"));
+            window.open(waLink(bookingWaMessage(data)), "_blank", "noopener");
+            return;
+        }
 
-        track("booking_submit", { treatment: data.treatment, first_visit: data.first });
-        showToast(ui("bookingOpened"));
-        window.open(waLink(lines.join("\n")), "_blank", "noopener");
+        setBookingBusy(true);
+        const result = await postBooking(data);
+        setBookingBusy(false);
+        slotsCache.clear();
+
+        if (result.status === "ok") {
+            track("booking_saved", { treatment: data.treatmentLabel });
+            showBookingResult("ok", data, result.id);
+        } else if (result.status === "taken") {
+            track("booking_slot_taken");
+            if (result.slots) renderSlotOptions(result.slots, "");
+            else await refreshTimeSlots();
+            setError("bkTime", ui("errSlotTaken"));
+            $("#bkTime").focus();
+        } else {
+            track("booking_api_error");
+            showBookingResult("fallback", data);
+        }
     });
+}
+
+function apiEnabled() {
+    return Boolean(CONFIG.bookingApi?.url) && !state.apiDown;
+}
+
+/** fetch al sistema con tiempo límite. Lanza error si no hay respuesta. */
+async function apiFetch(path, options = {}) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), CONFIG.bookingApi.timeoutMs);
+    try {
+        return await fetch(CONFIG.bookingApi.url.replace(/\/+$/, "") + path, {
+            ...options,
+            headers: { Accept: "application/json", ...(options.headers || {}) },
+            signal: controller.signal
+        });
+    } finally {
+        clearTimeout(timer);
+    }
+}
+
+/** Pasa a modo WhatsApp si el sistema falla, para no perder pacientes. */
+function markApiDown(reason) {
+    if (state.apiDown) return;
+    console.warn("Agenda: el sistema del consultorio no respondió, se usa el plan B (WhatsApp).", reason);
+    state.apiDown = true;
+    track("booking_api_down");
+    syncBookingMode();
+}
+
+const slotsCache = new Map();
+
+/** Horas libres de una fecha: del sistema si está conectado, si no del horario local. */
+async function getAvailableSlots(iso, treatment) {
+    const local = getSlotsForDate(iso);
+    // Días cerrados o pasados ni se consultan
+    if (!apiEnabled() || !local.length) return local;
+
+    const key = `${iso}|${treatment}`;
+    const hit = slotsCache.get(key);
+    if (hit && Date.now() - hit.at < CONFIG.bookingApi.cacheSeconds * 1000) return hit.slots;
+
+    try {
+        const params = new URLSearchParams({ fecha: iso, tratamiento: treatment });
+        const res = await apiFetch(`/disponibilidad?${params}`);
+        if (res.status === 422) return []; // fecha fuera de rango para el sistema
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const body = await res.json();
+        const slots = Array.isArray(body.horas) ? body.horas.filter((h) => /^\d{2}:\d{2}$/.test(h)) : [];
+        slotsCache.set(key, { at: Date.now(), slots });
+        return slots;
+    } catch (err) {
+        markApiDown(err);
+        return local;
+    }
+}
+
+/** Guarda la cita en el sistema. Nunca lanza error: devuelve un estado. */
+async function postBooking(data) {
+    try {
+        const res = await apiFetch("/citas", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                nombre: data.name,
+                telefono: data.phone,
+                tratamiento: data.treatment,
+                fecha: data.isoDate,
+                hora: data.time,
+                primera_visita: data.first,
+                notas: data.notes || null,
+                website: data.honeypot || null // campo trampa anti-bots
+            })
+        });
+        const body = await res.json().catch(() => ({}));
+        if (res.ok) return { status: "ok", id: body.id };
+        if (res.status === 409) {
+            return { status: "taken", slots: Array.isArray(body.horas) ? body.horas : null };
+        }
+        return { status: "error" };
+    } catch (err) {
+        return { status: "error" };
+    }
+}
+
+function readBookingForm() {
+    const iso = $("#bkDate").value;
+    const treatmentSelect = $("#bkTreatment");
+    return {
+        name: $("#bkName").value.trim(),
+        phone: $("#bkPhone").value.trim(),
+        treatment: treatmentSelect.value,
+        treatmentLabel: treatmentSelect.selectedOptions[0]?.textContent || "",
+        isoDate: iso,
+        date: formatIsoDate(iso),
+        time: $("#bkTime").value,
+        first: $("#bkFirstVisit").checked,
+        notes: $("#bkNotes").value.trim(),
+        honeypot: $("#bkWebsite")?.value || ""
+    };
+}
+
+function bookingWaMessage(data, code) {
+    const lines = [
+        ui("waBooking", { doctor: CONFIG.business.doctorFirstName }),
+        "",
+        `• *${ui("waName")}:* ${data.name}`,
+        `• *${ui("waPhone")}:* ${data.phone}`,
+        `• *${ui("waTreatment")}:* ${data.treatmentLabel}`,
+        `• *${ui("waDate")}:* ${data.date}`,
+        `• *${ui("waTime")}:* ${data.time}`,
+        `• *${ui("waFirst")}:* ${data.first ? ui("yes") : ui("no")}`
+    ];
+    if (data.notes) lines.push(`• *${ui("waNotes")}:* ${data.notes}`);
+    if (code) lines.push(`• *${ui("bookedCode")}:* #${code}`);
+    lines.push("", ui("waFooter"));
+    return lines.join("\n");
+}
+
+/** Textos del formulario según el modo: sistema conectado o solo WhatsApp. */
+function syncBookingMode() {
+    const dict = state.lang === "en" ? I18N_EN : I18N_ES;
+    const useApi = apiEnabled();
+    const sub = $('#agendar [data-i18n="book.sub"]');
+    const label = $('#bookingForm [data-i18n="book.submit"]');
+    if (sub) sub.textContent = useApi ? ui("subApi") : dict["book.sub"];
+    if (label) label.textContent = useApi ? ui("submitApi") : dict["book.submit"];
+    $("#bookingForm")?.classList.toggle("is-system", useApi);
+}
+
+function setBookingBusy(busy) {
+    const form = $("#bookingForm");
+    const button = $(".booking-submit", form);
+    const label = $('[data-i18n="book.submit"]', form);
+    form.classList.toggle("is-busy", busy);
+    form.setAttribute("aria-busy", String(busy));
+    if (button) button.disabled = busy;
+    if (busy && label) label.textContent = ui("booking");
+    else syncBookingMode();
+}
+
+function showBookingResult(type, data, code) {
+    const box = $("#bookingResult");
+    if (!box) return;
+    const ok = type === "ok";
+    box.classList.toggle("is-fallback", !ok);
+    $("#bookingResultTitle").textContent = ok ? ui("bookedTitle", { name: data.name.split(" ")[0] }) : ui("bookingFallbackTitle");
+    $("#bookingResultText").textContent = ok ? ui("bookedText", { date: data.date, time: data.time }) : ui("bookingFallbackText");
+    const codeEl = $("#bookingResultCode");
+    codeEl.hidden = !(ok && code);
+    codeEl.textContent = ok && code ? `${ui("bookedCode")}: #${code}` : "";
+    $("#bookingResultWaLabel").textContent = ui("bookingWaBtn");
+    $("#bookingResultWa").href = waLink(bookingWaMessage(data, ok ? code : null));
+    box.hidden = false;
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (ok) {
+        $("#bookingForm").reset();
+        resetBookingDefaults();
+    }
+}
+
+function hideBookingResult() {
+    const box = $("#bookingResult");
+    if (box) box.hidden = true;
+}
+
+/** Después de reservar, deja el formulario listo para otra cita. */
+function resetBookingDefaults() {
+    const dateInput = $("#bkDate");
+    ["bkName", "bkPhone", "bkDate", "bkTime"].forEach(clearError);
+    dateInput.value = nextOpenDate(nowInClinicTz().isoDate);
+    $("#bkFirstVisit").checked = true;
+    refreshTimeSlots();
 }
 
 function nextOpenDate(fromIso) {
@@ -1188,26 +1417,37 @@ function populateTreatmentSelect() {
     if (previous) select.value = previous;
 }
 
-function refreshTimeSlots() {
+async function refreshTimeSlots() {
     const select = $("#bkTime");
     const dateValue = $("#bkDate")?.value;
     if (!select) return;
     const previous = select.value;
+    const request = ++state.slotsRequest;
 
     if (!dateValue) {
-        select.innerHTML = `<option value="">${ui("selectDateFirst")}</option>`;
-        select.disabled = true;
+        renderSlotOptions([], "", ui("selectDateFirst"));
         return;
     }
-    const slots = getSlotsForDate(dateValue);
+    if (apiEnabled()) {
+        select.innerHTML = `<option value="">${ui("loadingSlots")}</option>`;
+        select.disabled = true;
+    }
+    const slots = await getAvailableSlots(dateValue, $("#bkTreatment")?.value || "");
+    if (request !== state.slotsRequest) return; // llegó una consulta más nueva
+    renderSlotOptions(slots, previous);
+}
+
+function renderSlotOptions(slots, previous = "", emptyText = ui("noSlots")) {
+    const select = $("#bkTime");
+    if (!select) return;
     if (!slots.length) {
-        select.innerHTML = `<option value="">${ui("noSlots")}</option>`;
+        select.innerHTML = `<option value="">${emptyText}</option>`;
         select.disabled = true;
         return;
     }
     select.disabled = false;
     select.innerHTML = `<option value="">${ui("selectTime")}</option>` +
-        slots.map((s) => `<option value="${s}">${s}</option>`).join("");
+        slots.map((s) => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join("");
     if (slots.includes(previous)) select.value = previous;
 }
 
@@ -1224,10 +1464,18 @@ function validateDate(showMessage) {
 function validateBooking() {
     let ok = true;
     if (!$("#bkName").value.trim()) { setError("bkName", ui("errName")); ok = false; }
+    if (!isValidPhone($("#bkPhone").value)) { setError("bkPhone", ui("errPhone")); ok = false; }
     if (!validateDate(true)) ok = false;
     else if (!$("#bkTime").value) { setError("bkTime", ui("errTime")); ok = false; }
     if (!ok) $("#bookingForm .is-invalid")?.focus();
     return ok;
+}
+
+/** Celular peruano (9 dígitos) o internacional con código de país (hasta 15). */
+function isValidPhone(value) {
+    const text = value.trim();
+    const digits = text.replace(/\D/g, "");
+    return /^\+?[\d\s()-]+$/.test(text) && digits.length >= 9 && digits.length <= 15;
 }
 
 function setError(fieldId, message) {

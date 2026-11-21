@@ -376,6 +376,18 @@
                     </div>
 
                     <div class="form-field">
+                        <label for="bkPhone" class="form-label" data-i18n="book.phone">Celular / WhatsApp</label>
+                        <input type="tel" id="bkPhone" name="phone" class="form-input" autocomplete="tel" inputmode="tel" required maxlength="20" data-i18n-ph="book.phonePh" placeholder="Ej. 987 654 321">
+                        <span class="form-error" data-error-for="bkPhone"></span>
+                    </div>
+
+                    <!-- Campo trampa: las personas no lo ven; si un bot lo llena, el sistema rechaza la cita -->
+                    <div class="form-hp" aria-hidden="true">
+                        <label for="bkWebsite">Sitio web</label>
+                        <input type="text" id="bkWebsite" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-field">
                         <label for="bkTreatment" class="form-label" data-i18n="book.treatment">Motivo de la consulta</label>
                         <select id="bkTreatment" name="treatment" class="form-input" required></select>
                     </div>
@@ -411,6 +423,17 @@
                         <span data-i18n="book.submit">Solicitar cita por WhatsApp</span>
                     </button>
                     <p class="booking-note" data-i18n="book.note">Sin costo ni compromiso. Tus datos solo se usan para coordinar tu cita.</p>
+
+                    <!-- Resultado de la reserva (solo con el sistema del consultorio conectado) -->
+                    <div class="booking-result" id="bookingResult" role="status" aria-live="polite" hidden>
+                        <p class="booking-result-title" id="bookingResultTitle"></p>
+                        <p class="booking-result-text" id="bookingResultText"></p>
+                        <p class="booking-result-code" id="bookingResultCode" hidden></p>
+                        <a href="#" class="booking-result-wa" id="bookingResultWa" target="_blank" rel="noopener" data-track="booking_whatsapp_confirm">
+                            <svg aria-hidden="true"><use href="#i-wa"/></svg>
+                            <span id="bookingResultWaLabel">Enviar por WhatsApp</span>
+                        </a>
+                    </div>
                 </form>
             </section>
 
